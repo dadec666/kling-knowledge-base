@@ -61,79 +61,103 @@ Kling теряет консистентность субъекта при выс
 
 ---
 
-## IV. DUAL-FRAME PIPELINE (Start/End Frame) & PLATFORM WORKFLOW
-
-### Pipeline Platform
-Вся генерация происходит на одной платформе: **RunwayML (app.runwayml.com)**
-
-Внутри платформы два режима:
-* **Image (Nano Banana 2):** Генерация статичных кадров. Используется для
-  создания Start Frame и End Frame перед видеогенерацией.
-* **Video (Kling 3.0 Pro):** Генерация видео. Принимает Start/End Frame
-  и текстовый промпт.
-
-### Рабочий порядок (всегда):
-1. Вкладка **Image** → Nano Banana 2 → референс в слот (если есть) →
-   генерируем Start Frame → скачиваем результат
-2. Вкладка **Image** → Nano Banana 2 → скачанный Start Frame в слот →
-   генерируем End Frame
-3. Вкладка **Video** → Kling 3.0 Pro → загружаем оба кадра + промпт → Generate
-
-**Ключевые правила:**
-* Референс → используется ТОЛЬКО на Шаге 1
-* End Frame → всегда генерируется из Start Frame, не из оригинального референса
-* Один субъект проходит сквозь весь пайплайн без разрывов консистентности
-
-### Frame Slot Logic
-* **Start Frame:** Defines the Source Anchor (Geometry, Lighting Key, Initial State).
-  Всегда Zero-Motion Anchor — без размытия, максимальная детализация.
-* **End Frame:** Defines the Target State (Final Texture, Material, or Position).
-* **Image Guidance:** Настройка guidance недоступна в интерфейсе RunwayML.
-  Консистентность субъекта между кадрами обеспечивается исключительно
-  через текстовые якоря в промпте (см. Consistency Anchors ниже).
-
-### Consistency Anchors (замена guidance)
-Три обязательных якоря в промпте для End Frame — без них субъект изменится:
-
-* `Subject from reference image` — явная привязка к референсу
-* `Maintain identical [angle / lighting / composition]` — фиксация параметров
-* `ONLY change: [X]` — явное ограничение что разрешено меняться
-
-### Промпты для генерации кадров
+## IV. GENERATION MODES (Режимы генерации Kling 3.0 Pro)
 
 ---
 
-**Промпт для Start Frame — с референсом:**
-Subject from reference. [Описание сцены / окружения].
-Zero-Motion Anchor.
-[Материал — SSS / Anisotropic / etc.].
-[Освещение — Rim Light / Chiaroscuro / Warm 3200K key light].
-[Камера — 85mm portrait / 35mm wide / Low-angle].
+### РЕЖИМ 1 — FRAMES
+Доступно: Start Frame + End Frame + текстовый промпт
+Длительность: 5s / 10s / 15s
 
-**Промпт для Start Frame — без референса:**
-[Полное описание субъекта — внешность, одежда, поза].
-[Описание сцены / окружения]. Zero-Motion Anchor.
-[Материал — SSS / Anisotropic / etc.].
-[Освещение — Rim Light / Chiaroscuro / Warm 3200K key light].
-[Камера — 85mm portrait / 35mm wide / Low-angle].
+Когда использовать:
+- Трансформация материала (твёрдое → жидкое)
+- Морфинг объекта
+- Смена состояния (сухое → мокрое, холодное → раскалённое)
+- Любой эффект где важно финальное состояние
+
+Пайплайн:
+    Nano Banana 2 → Start Frame → скачать
+    Nano Banana 2 → End Frame (из Start Frame как референс) → скачать
+    Kling FRAMES → загрузить оба кадра + промпт → Generate
+
+Выбор длительности:
+    5s  — быстрый удар, импульс, взрыв (Scale 7-10)
+    10s — стандартная трансформация (Scale 4-7)
+    15s — медленный морфинг, детализированные изменения (Scale 2-6)
+
+Референсное фото (если есть):
+    Используется ТОЛЬКО на шаге генерации Start Frame в Nano Banana 2.
+    End Frame всегда генерируется из скачанного Start Frame — не из оригинала.
+
+Промпт для Start Frame:
+    [Субъект из референса / описание субъекта]. Zero-Motion Anchor.
+    [Материал — SSS / Anisotropic / etc.].
+    [Освещение — Rim Light / Chiaroscuro / Warm 3200K key light].
+    [Камера — 85mm portrait / 35mm wide / Low-angle].
+    [Сцена / окружение].
+
+Промпт для End Frame:
+    Subject from reference image. Maintain identical facial geometry,
+    lighting direction, camera angle, and composition.
+    ONLY change: [что меняется — материал / состояние / выражение].
+    Zero-Motion Anchor. No expression drift. No angle shift.
+    [Финальный материал — SSS / Anisotropic / etc.].
+
+Consistency Anchors (обязательны в End Frame промпте):
+    `Subject from reference image` — явная привязка к Start Frame
+    `Maintain identical [angle / lighting / composition]` — фиксация параметров
+    `ONLY change: [X]` — явное ограничение что разрешено меняться
 
 ---
 
-**Промпт для End Frame (всегда из Start Frame):**
-Subject from reference image. Maintain identical facial geometry,
-lighting direction, camera angle, and composition.
-ONLY change: [что меняется — материал / состояние / выражение].
-Zero-Motion Anchor. No expression drift. No angle shift.
-[Финальный материал — SSS / Anisotropic / etc.].
+### РЕЖИМ 2 — MULTISHOT
+Доступно: Start Frame (общий) + промпт для каждого шота
+Длительность каждого шота: 3-12s
+Суммарная длительность: не более 15s
 
-> End Frame всегда генерируется из скачанного Start Frame —
-> независимо от того был референс на Шаге 1 или нет.
+Когда использовать:
+- Нарративная последовательность (несколько действий подряд)
+- Смена ракурсов камеры внутри одной сцены
+- Несколько эмоций или состояний подряд
+- Shot list из 2-4 шотов
 
-### Negative Prompt
-Отдельного поля Negative Prompt в интерфейсе RunwayML нет ни в Image ни в Video.
-Негативные директивы вшиваются inline в конец основного промпта:
-`No jelly-like distortion, no flickering, no [scene-relevant artifact]`
+Пайплайн:
+    Nano Banana 2 → Start Frame → скачать
+    Kling MULTISHOT → загрузить Start Frame
+    → Shot 1: промпт + длительность
+    → Shot 2: промпт + длительность
+    → Shot 3: промпт + длительность (если нужен)
+    → Generate
 
+Типовые конфигурации шотов:
+    2 шота: 7s + 8s = 15s
+    3 шота: 5s + 5s + 5s = 15s
+    3 шота: 4s + 5s + 6s = 15s
+    4 шота: 3s + 4s + 4s + 4s = 15s
+
+Важные ограничения:
+- Start Frame один для всей последовательности
+- End Frame недоступен — финал описывается только текстом последнего шота
+- Каждый шот получает отдельный промпт
+- Anchor субъекта должен быть идентичен в каждом шот-промпте
+- Clean Prompt Rule действует для каждого шот-промпта отдельно
+
+---
+
+### ВЫБОР РЕЖИМА — БЫСТРАЯ ТАБЛИЦА
+
+| Задача | Режим | Почему |
+|---|---|---|
+| Объект плавится / морфирует | FRAMES | Нужен точный End Frame |
+| Персонаж делает 3 действия | MULTISHOT | Нарратив из нескольких шотов |
+| Reveal материала | FRAMES | Финальное состояние критично |
+| Диалог + реакция + уход | MULTISHOT | Три разных момента |
+| Удар капли (макро) | FRAMES | Точный начальный и конечный кадр |
+| Смена ракурсов камеры | MULTISHOT | Несколько углов одной сцены |
+| Термальный контакт | FRAMES | Нужен финальный след |
+| Атмосферная сцена | MULTISHOT | Накопление деталей по шотам |
+| Портрет / Lip-sync | FRAMES | Точный контроль финального состояния |
+| Экшен сцена (3+ действия) | MULTISHOT | Динамика нескольких шотов |
 ---
 
 ## V. NATIVE AUDIO ENGINE
