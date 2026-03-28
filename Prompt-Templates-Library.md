@@ -16,7 +16,7 @@
 
 ## TEMPLATE 01 — LIQUID TRANSFORMATION
 > Твёрдый объект трансформируется в жидкость (плавление, морфинг, растворение)
-> Режим: 10s или 15s | Motion Scale: 5-7
+> Режим: 10s или 15s | Интенсивность: Natural → Cinematic
 
 ### Внутренний анализ (не копировать в Kling):
 - 0-3s: Anchor в статике, микровибрации, stress fractures появляются
@@ -39,7 +39,7 @@ No jelly-like distortion, no flickering, no sudden frame jumps.
 
 ## TEMPLATE 02 — IMPACT MACRO
 > Удар капли/снаряда о поверхность. Макросъёмка, гиперреализм.
-> Режим: 5s или 10s | Motion Scale: 7-9
+> Режим: 5s или 10s | Интенсивность: Cinematic
 
 ### Внутренний анализ:
 - 0-1s: Капля/объект в воздухе, Zero-Motion Anchor на поверхности
@@ -63,7 +63,7 @@ No flickering, no floating debris.
 
 ## TEMPLATE 03 — VEHICLE REVEAL
 > Кинематографичный reveal автомобиля, мотоцикла или техники.
-> Режим: 10s или 15s | Motion Scale: 4-6
+> Режим: 10s или 15s | Интенсивность: Natural
 
 ### Внутренний анализ:
 - 0-3s: Anchor в статике, детали материала, атмосфера
@@ -88,7 +88,7 @@ No brand hallucination, no flickering.
 
 ## TEMPLATE 04 — CHARACTER SPEAKING (LIP-SYNC)
 > Персонаж говорит в камеру. Портретный крупный план.
-> Режим: 10s или 15s | Motion Scale: 2-3
+> Режим: 10s или 15s | Интенсивность: Static / Micro
 
 ### Внутренний анализ:
 - 0-3s: Anchor лица, микроэмоции, установка освещения
@@ -113,7 +113,7 @@ No limb duplication, no flickering.
 
 ## TEMPLATE 05 — FIRE & DESTRUCTION
 > Объект горит, взрывается или разрушается огнём.
-> Режим: 10s или 15s | Motion Scale: 8-10
+> Режим: 10s или 15s | Интенсивность: Hyper / Chaos
 
 ### Внутренний анализ:
 - 0-3s: Anchor в статике, stress fractures начинаются
@@ -141,7 +141,7 @@ No jelly-like distortion, no floating debris, no sudden frame jumps.
 
 ## TEMPLATE 06 — ATMOSPHERIC ENVIRONMENT
 > Живая среда без главного объекта: природа, улица, интерьер.
-> Режим: 10s или 15s | Motion Scale: 2-4
+> Режим: 10s или 15s | Интенсивность: Static / Micro
 
 ### Внутренний анализ:
 - 0-5s: Установка атмосферы, spatial layering
@@ -168,7 +168,7 @@ No flickering, no sudden frame jumps.
 
 ## TEMPLATE 07 — THERMAL CONTACT (лава / металл / кислота)
 > Раскалённая жидкость встречает холодную твёрдую поверхность.
-> Режим: 10s или 15s | Motion Scale: 6-8
+> Режим: 10s или 15s | Интенсивность: Cinematic
 
 ### Внутренний анализ:
 - 0-2s: Anchor поверхности, Leidenfrost эффект уже присутствует
@@ -196,15 +196,15 @@ No jelly-like distortion, no flickering.
 
 ## БЫСТРЫЙ ВЫБОР ШАБЛОНА
 
-| Сцена | Шаблон | Режим |
-|---|---|---|
-| Объект плавится / морфирует | TEMPLATE 01 | 10-15s |
-| Капля ударяет о поверхность | TEMPLATE 02 | 5-10s |
-| Reveal автомобиля / техники | TEMPLATE 03 | 10-15s |
-| Персонаж говорит в камеру | TEMPLATE 04 | 10-15s |
-| Огонь / взрыв / разрушение | TEMPLATE 05 | 10-15s |
-| Живая среда / атмосфера | TEMPLATE 06 | 10-15s |
-| Лава / металл касается поверхности | TEMPLATE 07 | 10-15s |
+| Сцена | Шаблон | Режим | Интенсивность |
+|---|---|---|---|
+| Объект плавится / морфирует | TEMPLATE 01 | 10-15s | Natural → Cinematic |
+| Капля ударяет о поверхность | TEMPLATE 02 | 5-10s | Cinematic |
+| Reveal автомобиля / техники | TEMPLATE 03 | 10-15s | Natural |
+| Персонаж говорит в камеру | TEMPLATE 04 | 10-15s | Static / Micro |
+| Огонь / взрыв / разрушение | TEMPLATE 05 | 10-15s | Hyper / Chaos |
+| Живая среда / атмосфера | TEMPLATE 06 | 10-15s | Static / Micro |
+| Лава / металл касается поверхности | TEMPLATE 07 | 10-15s | Cinematic |
 
 ---
 
