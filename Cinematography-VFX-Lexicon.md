@@ -101,3 +101,90 @@
   Токен: `sudden speed ramp from 24fps real-time to 120fps extreme slow-motion`
 * **Caustic Light Refraction:** Узоры света через воду или стекло.
   Токен: `caustic light refraction pattern through glass surface`
+
+---
+
+## VI. LIGHTING PRESETS (Готовые световые связки)
+
+Готовые пресеты для быстрой вставки в промпт.
+Выбери пресет → скопируй строку токенов → вставь в блок освещения.
+
+---
+
+### PRESET 01 — NOIR
+> Детектив, триллер, криминальная драма. Жёсткие тени, минимум заполняющего света.
+
+    Tokens: Chiaroscuro — hard key light from 45-degree angle, strong negative fill
+    on shadow side, cold 5600K practical light, deep underexposed background,
+    subtle rim light defining silhouette edge.
+
+---
+
+### PRESET 02 — GOLDEN HOUR
+> Природа, романтика, эпические финалы. Тёплый боковой свет.
+
+    Tokens: Warm 3200K key light from low horizontal angle, Rim Lighting — golden
+    edge highlight on subject contour, Volumetric God Rays through dust or haze,
+    Global Illumination — warm bounce from ground surface, Teal & Orange Grade.
+
+---
+
+### PRESET 03 — INDUSTRIAL / FORGE
+> Металл, огонь, производство, лава. Практические источники света.
+
+    Tokens: Sodium vapor practical light — warm 2700K dominant source, strong negative
+    fill on opposite side, heat haze shimmer above hot surfaces, Volumetric God Rays
+    through smoke column, underexposed background with spot illumination only.
+
+---
+
+### PRESET 04 — NEON NOIR (Cyberpunk)
+> Ночной город, неон, дождь. Цветной отражённый свет.
+
+    Tokens: Global Illumination — neon colour bounce on wet asphalt, teal and magenta
+    practical lights as key sources, Volumetric God Rays through rain and fog,
+    caustic light refraction pattern in puddles, deep shadow zones between light pools,
+    subtle peripheral chromatic aberration.
+
+---
+
+### PRESET 05 — CLINICAL / COLD
+> Лаборатория, sci-fi, хоррор. Холодный равномерный свет без теней.
+
+    Tokens: Cold 6500K overhead fluorescent key light, minimal shadow depth,
+    Global Illumination — flat even bounce, subtle Rim Lighting from below,
+    no warm tones, desaturated background, occasional flicker on practical sources.
+
+---
+
+### PRESET 06 — MACRO STUDIO
+> Крупный план продукта, капли, материалы. Контролируемый студийный свет.
+
+    Tokens: Rim Lighting — dual edge lights left and right, soft box key light
+    from above at 90 degrees, caustic light refraction pattern through subject,
+    Global Illumination — clean white bounce, no coloured gels, Specular
+    Micro-geometry highlights on surface details.
+
+---
+
+### PRESET 07 — APOCALYPTIC / OVERCAST
+> Постапокалипсис, война, разрушение. Рассеянный серый свет.
+
+    Tokens: Overcast diffused daylight — flat 7000K grey key light, no direct
+    shadows, Volumetric God Rays through smoke and ash, micro-dust illumination
+    in backlit shaft, Brownian motion particle drift, desaturated colour grade,
+    cold rim light from distant fire source.
+
+---
+
+### БЫСТРАЯ ТАБЛИЦА ВЫБОРА
+
+| Настроение | Пресет | Ключевой токен |
+|---|---|---|
+| Детектив / триллер | NOIR | `Chiaroscuro, strong negative fill` |
+| Закат / природа | GOLDEN HOUR | `Warm 3200K, Rim Lighting golden` |
+| Металл / огонь | INDUSTRIAL | `Sodium vapor 2700K, heat haze` |
+| Ночной город | NEON NOIR | `GI neon bounce, caustic puddles` |
+| Лаборатория / sci-fi | CLINICAL | `Cold 6500K, flat GI bounce` |
+| Продукт / макро | MACRO STUDIO | `Dual Rim Light, soft box 90°` |
+| Постапокалипсис | APOCALYPTIC | `Overcast 7000K, ash particles` |
