@@ -8,23 +8,23 @@
 
 ---
 
-## II. MOTION SCALE SYSTEM (Values 1-10)
+## II. MOTION INTENSITY SYSTEM
 
 > Внутренняя классификация интенсивности движения. Отдельной настройки
 > в интерфейсе RunwayML нет — управляется исключительно через текст промпта.
 
-* **1-2 (Static/Micro):** Only wind, dust, or breathing. Use for high-detail macro shots.
+* **Static / Micro:** Only wind, dust, or breathing. Use for high-detail macro shots.
   Промпт: `subtle micro-vibration, barely perceptible movement`
-* **3-5 (Natural):** Normal human/animal movement, steady vehicle cruise, hair blowing.
+* **Natural:** Normal human/animal movement, steady vehicle cruise, hair blowing.
   Промпт: `steady natural movement, smooth controlled motion`
-* **6-8 (Cinematic):** Fast tracking, dramatic action, sports, controlled debris.
+* **Cinematic:** Fast tracking, dramatic action, sports, controlled debris.
   Промпт: `dynamic fast motion, dramatic action, rapid camera tracking`
-* **9-10 (Hyper/Chaos):** Massive destruction, high-velocity transitions, camera shakes.
+* **Hyper / Chaos:** Massive destruction, high-velocity transitions, camera shakes.
   Промпт: `extreme high-velocity motion, chaotic destruction, violent impact`
 
 ---
 
-## III. MOTION SCALE REFERENCE TABLE (Таблица Motion Scale по сценам)
+## III. MOTION INTENSITY REFERENCE TABLE (Таблица интенсивности по сценам)
 
 > Motion Scale — внутренний инструмент выбора токенов, не UI параметр.
 > Используй таблицу чтобы подобрать нужные токены интенсивности для промпта.
