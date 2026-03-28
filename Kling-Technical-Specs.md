@@ -17,7 +17,51 @@
 
 ---
 
-## III. DUAL-FRAME PIPELINE (Start/End Frame) & PLATFORM WORKFLOW
+## III. MOTION SCALE REFERENCE TABLE (Таблица Motion Scale по сценам)
+
+### Шкала значений (1-10)
+
+| Scale | Категория | Характеристика |
+|---|---|---|
+| 1-2 | Static / Micro | Только дыхание, ветер, пыль. Макросъёмка |
+| 3-5 | Natural | Обычное движение человека, животного, транспорта |
+| 6-8 | Cinematic | Экшен, драматика, спорт, контролируемый хаос |
+| 9-10 | Hyper / Chaos | Разрушение, высокоскоростные переходы, shake |
+
+---
+
+### Рекомендации по типам сцен
+
+| Тип сцены | Scale | Режим | Обоснование |
+|---|---|---|---|
+| Макро капля / Impact | 6-7 | 5s | Быстрый удар, короткое действие |
+| Портрет / Lip-sync | 2-3 | 10-15s | Минимум движения, максимум детали лица |
+| Жидкая трансформация | 5-7 | 15s | Плавный морфинг, нужно время |
+| Reveal автомобиля | 4-6 | 10-15s | Плавное движение камеры, детали |
+| Огонь / взрыв | 8-10 | 10-15s | Хаотичная динамика, debris |
+| Термальный контакт | 6-8 | 10-15s | Активная реакция материалов |
+| Атмосфера / среда | 2-4 | 10-15s | Медленное накопление деталей |
+| Персонаж идёт | 3-5 | 10s | Естественное движение |
+| Разрушение / краш | 9-10 | 5-10s | Максимальный хаос, быстро |
+| Ткань на ветру | 4-6 | 10s | Органичное колыхание |
+| Стекло бьётся | 7-9 | 5s | Быстрый импульс, разлёт осколков |
+| Продуктовый макро | 1-3 | 10-15s | Статика с микродеталями |
+
+---
+
+### Правило совмещения Scale и Duration
+
+    Scale 1-4  → предпочтителен режим 10-15s (нужно время для накопления деталей)
+    Scale 5-7  → любой режим 5-15s в зависимости от сцены
+    Scale 8-10 → предпочтителен режим 5-10s (хаос не нужно растягивать)
+
+### Критическое правило
+Scale 9-10 в режиме 15s — почти всегда даёт артефакты.
+Kling теряет консистентность субъекта при высоком Scale на длинных клипах.
+
+---
+
+## IV. DUAL-FRAME PIPELINE (Start/End Frame) & PLATFORM WORKFLOW
 
 ### Pipeline Platform
 Вся генерация происходит на одной платформе: **RunwayML (app.runwayml.com)**
@@ -92,7 +136,7 @@ Zero-Motion Anchor. No expression drift. No angle shift.
 
 ---
 
-## IV. NATIVE AUDIO ENGINE
+## V. NATIVE AUDIO ENGINE
 
 * **Sync Protocol:** Audio must trigger at the visual "Peak" of the movement.
 * **Format:** [Ambient: context], [Sound: specific action], [Music: mood/genre].
@@ -100,7 +144,7 @@ Zero-Motion Anchor. No expression drift. No angle shift.
 
 ---
 
-## V. NATIVE AUDIO & LIP-SYNC PROTOCOL (v2.0)
+## VI. NATIVE AUDIO & LIP-SYNC PROTOCOL (v2.0)
 
 * **High-Fidelity Lip-Sync:** При использовании видео с говорящим персонажем обязательно добавляй:
   `[Character] speaks directly to lens, high-fidelity lip synchronization, natural jaw movement`
