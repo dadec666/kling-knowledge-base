@@ -231,3 +231,81 @@
   с радужными разводами — граница чистого и грязного стекла.
   Токен: `wiper arc residue boundary — thin film iridescence
   at clean-dirty glass transition line`
+
+---
+
+## XI. FABRIC & CLOTH PHYSICS (Физика ткани и одежды)
+
+### A. Drape & Weight (Драпировка и вес)
+
+* **Cloth Drape Simulation:** Ткань падает под весом — форма складок
+  зависит от плотности материала. Шёлк течёт плавно, деним держит форму.
+  Токен: `cloth drape simulation — fabric weight defines fold radius,
+  silk fluid cascade vs denim rigid crease geometry`
+
+* **Bias Cut Distortion:** Ткань скроенная по диагонали тянется
+  иначе — складки идут под 45 градусов, силуэт живёт при движении.
+  Токен: `bias cut fabric distortion — 45-degree grain fold lines,
+  silhouette breathing with body movement`
+
+* **Hem Oscillation:** Нижний край ткани колышется с запаздыванием
+  после основного движения — амплитуда зависит от длины и веса.
+  Токен: `hem oscillation trailing behind primary body motion,
+  amplitude decay proportional to fabric length and weight`
+
+---
+
+### B. Wind & Air Interaction (Ветер и воздух)
+
+* **Wind Billow:** Ткань наполняется воздухом — выпуклые паруса
+  с чёткой границей натяжения по краям.
+  Токен: `wind billow inflation — convex fabric sail with tension
+  line at leading edge, trailing hem flutter`
+
+* **Turbulent Flutter:** Хаотичное дрожание лёгкой ткани в турбулентном
+  потоке — не периодическое, а случайное по частоте и амплитуде.
+  Токен: `turbulent fabric flutter — aperiodic frequency variation,
+  random amplitude micro-oscillation on lightweight material`
+
+* **Vortex Wrap:** Ткань закручивается вокруг тела при резком повороте —
+  инерция тянет её по касательной к траектории движения.
+  Токен: `vortex wrap — fabric inertia tangential lag on rapid
+  body rotation, wrap-around trailing edge`
+
+---
+
+### C. Tension & Stress (Натяжение и нагрузка)
+
+* **Fabric Tension Lines:** Складки концентрируются в точках натяжения —
+  рукав при поднятии руки, колено при шаге, плечо при повороте.
+  Токен: `fabric tension fold convergence at stress points —
+  sleeve pull on arm raise, knee gather on stride`
+
+* **Seam Stress Deformation:** Швы стягивают ткань при нагрузке —
+  видна деформация по линии шва, нитки натянуты.
+  Токен: `seam stress deformation under load — fabric distortion
+  along stitch line, thread tension visible at joint`
+
+* **Stretch Recovery:** Эластичная ткань возвращается в форму после
+  растяжения — с лёгкой вибрацией и остаточными складками.
+  Токен: `elastic fabric stretch recovery — rebound oscillation
+  with residual crease memory after deformation`
+
+---
+
+### D. Wet & Soiled States (Мокрая и загрязнённая ткань)
+
+* **Wet Fabric Adhesion:** Мокрая ткань прилипает к телу — повторяет
+  контуры под ней, темнеет, теряет воздушность складок.
+  Токен: `wet fabric adhesion to body surface — form-revealing
+  drape, darkened saturation, collapsed fold volume`
+
+* **Mud Splash Absorption:** Грязь впитывается в ткань неравномерно —
+  пятно расплывается по волокнам через Capillary Creep.
+  Токен: `mud splash absorption into fabric weave — irregular
+  stain boundary spreading via capillary creep through fibres`
+
+* **Drying Tide Mark:** После высыхания остаётся светлый контур
+  по границе пятна — минеральный осадок по краю.
+  Токен: `drying tide mark on fabric — pale mineral residue ring
+  at former wet boundary after evaporation`
