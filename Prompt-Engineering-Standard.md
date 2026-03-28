@@ -70,27 +70,68 @@
 
 ---
 
-## VII. NEGATIVE PROMPTING & HYGIENE
+## VII. NEGATIVE PROMPTING HYGIENE
 
-### ВАЖНО — Платформенное ограничение RunwayML
+### Платформенное ограничение RunwayML
 RunwayML не имеет отдельного поля Negative Prompt ни в режиме Image (Nano Banana 2)
 ни в режиме Video (Kling 3.0 Pro). Единственный рабочий метод — inline-запрет
-в конце промпта через явные отрицания:
+в конце промпта через явные отрицания.
 
-**Обязательная закрывающая строка каждого промпта:**
-`No jelly-like distortion, no flickering, no limb duplication,
-no floating debris, no sudden frame jumps, no brand hallucination`
+---
 
-**Сцено-специфичные дополнения (добавлять к базовой строке):**
+### Базовая закрывающая строка (обязательна в каждом промпте)
+No jelly-like distortion, no flickering, no limb duplication,
+no floating debris, no sudden frame jumps, no brand hallucination.
+
+---
+
+### Сцено-специфичные дополнения
+Добавляются К базовой строке — не заменяют её.
 
 | Тип сцены | Дополнительный inline-негатив |
 |---|---|
-| Жидкости / морфинг | `no surface tension violation, no physics reversal` |
-| Лицо / персонаж | `no teeth distortion, no eye asymmetry, no skin flickering` |
-| Огонь / взрыв | `no static flame, no uniform color burn, no floating embers` |
-| Техника / авто | `no wheel deformation, no logo distortion` |
-| Макро / капли | `no droplet merging artifacts, no gravity reversal` |
-| Термальный контакт | `no instant material phase skip, no colour banding` |
+| Жидкости / морфинг | `no surface tension violation, no physics reversal, no liquid teleportation` |
+| Лицо / персонаж | `no teeth distortion, no eye asymmetry, no skin flickering, no facial collapse` |
+| Огонь / взрыв | `no static flame, no uniform color burn, no floating embers, no flat smoke` |
+| Техника / авто | `no wheel deformation, no logo distortion, no chassis warping` |
+| Макро / капли | `no droplet merging artifacts, no gravity reversal, no surface penetration` |
+| Термальный контакт | `no instant material phase skip, no colour banding, no clean edges on melt` |
+| Ткань / одежда | `no fabric clipping, no texture stretching, no unnatural rigidity` |
+| Стекло / прозрачность | `no opaque glass, no missing refraction, no flat reflection` |
+| Персонаж в движении | `no foot sliding, no weight floating, no joint hyper-extension` |
+| Атмосфера / среда | `no static particles, no repeating loop pattern, no uniform fog density` |
+
+---
+
+### Готовые финальные строки по шаблонам
+
+**TEMPLATE 01 — Liquid Transformation:**
+No jelly-like distortion, no flickering, no sudden frame jumps,
+no surface tension violation, no physics reversal, no liquid teleportation.
+
+**TEMPLATE 02 — Impact Macro:**
+No flickering, no floating debris, no sudden frame jumps,
+no droplet merging artifacts, no gravity reversal, no surface penetration.
+
+**TEMPLATE 03 — Vehicle Reveal:**
+No jelly-like distortion, no flickering, no brand hallucination,
+no wheel deformation, no logo distortion, no chassis warping.
+
+**TEMPLATE 04 — Character Speaking:**
+No flickering, no limb duplication, no sudden frame jumps,
+no teeth distortion, no eye asymmetry, no skin flickering, no facial collapse.
+
+**TEMPLATE 05 — Fire & Destruction:**
+No jelly-like distortion, no floating debris, no sudden frame jumps,
+no static flame, no uniform color burn, no flat smoke.
+
+**TEMPLATE 06 — Atmospheric Environment:**
+No flickering, no sudden frame jumps, no brand hallucination,
+no static particles, no repeating loop pattern, no uniform fog density.
+
+**TEMPLATE 07 — Thermal Contact:**
+No jelly-like distortion, no flickering, no sudden frame jumps,
+no instant material phase skip, no colour banding, no clean edges on melt.
 
 ---
 
