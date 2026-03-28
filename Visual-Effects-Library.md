@@ -158,3 +158,76 @@
 * **Ground Contact Deformation:** Мягкие части тела (ступни, ягодицы) деформируются
   в точке контакта с поверхностью под весом тела.
   Токен: `ground contact soft tissue deformation under body weight at contact point`
+
+---
+
+## X. GLASS & TRANSPARENCY PHYSICS (Физика стекла и прозрачности)
+
+### A. Optical Properties (Оптические свойства)
+
+* **Fresnel Effect:** Отражение зависит от угла зрения — под прямым углом
+  стекло прозрачно, под острым становится зеркальным.
+  Токен: `Fresnel reflectance shift — transparent at normal incidence,
+  mirror-like at grazing angle`
+
+* **Internal Refraction:** Объекты за стеклом искажаются — смещаются,
+  раздваиваются, меняют цвет на границе материала.
+  Токен: `internal refraction distortion through glass body,
+  object displacement and chromatic shift at material boundary`
+
+* **Caustic Projection:** Концентрированные узоры света на поверхности
+  за стеклом — движутся при изменении угла освещения.
+  Токен: `caustic light projection through glass onto receiving surface,
+  dynamic focus pattern shifting with light angle`
+
+---
+
+### B. Surface States (Состояния поверхности)
+
+* **Condensation Micro-droplets:** Мельчайшие капли конденсата на холодном
+  стекле — неравномерные, с Contact Angle Dynamics на каждой капле.
+  Токен: `condensation micro-droplets on cold glass surface,
+  hydrophilic flat meniscus, irregular distribution`
+
+* **Smear & Fingerprint Residue:** Жировые разводы и отпечатки пальцев —
+  видны только под определённым углом освещения (Fresnel зависимость).
+  Токен: `fingerprint smear residue on glass — visible only at
+  oblique lighting angle, thin-film iridescence on grease trace`
+
+* **Frost Crystal Growth:** Кристаллы инея растут от краёв к центру
+  по дендритным паттернам — каждый кристалл с анизотропным бликом.
+  Токен: `frost crystal dendritic growth across glass surface,
+  anisotropic highlight on each ice facet`
+
+---
+
+### C. Fracture Dynamics (Динамика разрушения)
+
+* **Spider Web Fracture:** Паутина трещин расходится радиально от точки
+  удара — основные трещины с концентрическими кольцами между ними.
+  Токен: `spider web fracture pattern radiating from impact point,
+  concentric ring cracks between radial lines`
+
+* **Shatter Fragment Scatter:** Осколки разлетаются конически от точки
+  удара — каждый фрагмент с острыми гранями и Fresnel бликами.
+  Токен: `glass shatter fragment scatter — conical ejection trajectory,
+  sharp edge Fresnel highlights on each shard`
+
+* **Laminate Delamination:** Многослойное стекло не рассыпается —
+  слои расходятся, между ними появляется воздушная прослойка с иридесценцией.
+  Токен: `laminate glass delamination — layers separating with
+  thin-film iridescence in air gap between plies`
+
+---
+
+### D. Liquid-Glass Interaction (Жидкость на стекле)
+
+* **Rain Streak Channeling:** Капли дождя сливаются в ручейки —
+  путь определяется микрорельефом поверхности, не гравитацией.
+  Токен: `rain streak channeling on glass — droplet merging into
+  rivulets guided by surface micro-texture, not gravity alone`
+
+* **Wiper Arc Residue:** После удара дворника остаётся тонкая плёнка
+  с радужными разводами — граница чистого и грязного стекла.
+  Токен: `wiper arc residue boundary — thin film iridescence
+  at clean-dirty glass transition line`
