@@ -231,11 +231,10 @@
 ---
 
 ## 🚫 FORBIDDEN TOKENS
-
 `beautiful` · `masterpiece` · `high quality` · `amazing` · `stunning` · `breathtaking`
 `4k` · `8k` · `ultra-realistic` · `photorealistic` · `cinematic` · `real-life`
 `perfect` · `ideal` · `best` · `cool` · `highly detailed background` · `many details`
 
 ---
 
-*v8.2 | Обновлено: 2026-03-27 | Токенов в базе: 78*
+*v8.3 | Обновлено: 2026-03-28 | Токенов в базе: 110+*
